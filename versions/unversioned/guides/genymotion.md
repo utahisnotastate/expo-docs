@@ -10,21 +10,34 @@ Genymotion and XDE/`exp` both bundle their own versions of the Android tools. In
 
 Choose one of these two options:
 
-### Option 1: Use Genymotion's tools
+### Option 1: Use Android Studio's tools
+
+-   Install Android Studio.
+
+-   Go to Configure -> SDK Manager.
+
+[![Configure SDK](./genymotion-configure-sdk.png)](/_images/genymotion-configure-sdk.png)
+
+-   In SDK Manager, make sure you are in Appearance & Behaviour -> System Settings -> Android SDK.
+   Your SDK and tools are in the box that says Android SDK Location. Remember this location!
+
+[![Android SDK location](./genymotion-android-sdk-location.png)](/_images/genymotion-android-sdk-location.png)
+
+-   If you are on macOS or Linux, add the Android SDK location to you PATH using ~/.bash_profile or ~/.bash_rc.
+
+-   Make sure that you can run `adb` from your terminal.
+
+-   Open Genymotion and navigate to Settings -> ADB. Select "Use custom Android SDK tools" and update with your Android SDK location:
+
+[![](./genymotion-android-tools.png)](/_images/genymotion-android-tools.png)
+
+-   Start Genymotion
+
+### Option 2: Use Genymotion's tools
 
 -   Find Genymotion's copy of `adb`. On macOS this is normally `/Applications/Genymotion.app/Contents/MacOS/tools/`.
 -   Add the Genymotion tools directory to your path.
 -   Make sure that you can run `adb` from your terminal.
-
-### Option 2: Use Android Studio's tools
-
--   Install Android Studio.
-
--   Make sure that you can run `adb` from your terminal.
-
--   Open Genymotion and navigate to Settings -> ADB. Select "Use custom Android SDK tools" and update with your Android SDK directory:
-
-[![](./genymotion-android-tools.png)](/_images/genymotion-android-tools.png)
 
 ## Step 2: Set your path in XDE
 

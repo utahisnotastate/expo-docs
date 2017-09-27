@@ -9,13 +9,15 @@ title: Configuration with app.json
   "expo": {
     "name": "My app",
     "slug": "my-app",
-    "sdkVersion": "17.0.0",
+    "sdkVersion": "UNVERSIONED",
     "privacy": "public"
   }
 }
 ```
 
 `app.json` was previous referred to as `exp.json`, but for consistency with [Create React Native App](https://github.com/react-community/create-react-native-app) it has been consolidated under one file. If you are converting your app from using `exp.json` to `app.json`, all you need to do is add an `"expo"` key at the root of `app.json`, as the parent of all other keys.
+
+Most configuration from `app.json` is accessible at runtime from your JavaScript code via [`Expo.Constants.manifest`](../sdk/constants.html#expoconstantsmanifest). Sensitive information such as secret keys are removed. See the `"extra"` key below for information about how to pass arbitrary configuration data to your app.
 
 The following is a list of properties that are available for you under the `"expo"` key in `app.json`:
 
@@ -93,7 +95,6 @@ The following is a list of properties that are available for you under the `"exp
    - `exponentIconColor`
 
       If no icon is provided, we will show the Expo logo. You can choose between `white` and `blue`.
-    white, blue
 
    - `exponentIconGrayscale`
 
@@ -111,6 +112,27 @@ The following is a list of properties that are available for you under the `"exp
    - `hideExponentText`
 
       By default, Expo shows some text at the bottom of the loading screen. Set this to `true` to disable.
+
+   - `splash`
+
+      Configuration for loading and splash screen for standalone apps.
+
+       - `backgroundColor`
+
+          Color to fill the loading screen background
+        6 character long hex color string, eg: `'#000000'`
+
+       - `image`
+
+          Properties for customizing the images on the splash and loading screen for standalone apps.
+
+           - `ios`
+
+              Image specific properties for the loading experience on iOS standalone apps.
+
+               - `backgroundImage`
+
+                  Local path or remote url to an image to fill the background of the loading screen. Image size and aspect ratio are up to you. Must be a .png. Will be inserted into the loading screen's background image view with contentMode `aspectFill`.
 
 - `appKey`
 
@@ -148,20 +170,20 @@ The following is a list of properties that are available for you under the `"exp
 
 - `extra`
 
-   Any extra fields you want to pass to your experience.
+   Any extra fields you want to pass to your experience. Values are accessible via `Expo.Constants.manifest.extra` ([read more](../sdk/constants.html#expoconstantsmanifest))
 
 - `rnCliPath`
 
-
+   
 - `packagerOpts`
 
-
+   
 - `ignoreNodeModulesValidation`
 
-
+   
 - `nodeModulesPath`
 
-
+   
 - `ios`
 
    **Standalone Apps Only**. iOS standalone app specific configuration
@@ -179,9 +201,13 @@ The following is a list of properties that are available for you under the `"exp
 
       Local path or remote url to an image to use for your app's icon on iOS. If specified, this overrides the top-level `icon` key. iOS icons should be square png files with no transparent pixels. This icon will appear on the home screen and within the Expo app.
 
+   - `merchantId`
+
+      Merchant ID for use with Apple Pay in your standalone app.
+
    - `config`
 
-
+      
        - `branch`
 
           [Branch](https://branch.io/) key to hook up Branch linking services.
@@ -208,7 +234,7 @@ The following is a list of properties that are available for you under the `"exp
 
    - `isRemoteJSEnabled`
 
-      If set to false, your standalone app will never download any code, and will only use code bundled locally on the device. In that case, all updates to your app must be submitted through Apple review. Defaults to true.
+      If set to false, your standalone app will never download any code, and will only use code bundled locally on the device. In that case, all updates to your app must be submitted through Apple review. Defaults to true. (Note that this will not work out of the box with ExpoKit projects)
 
    - `supportsTablet`
 
@@ -241,11 +267,44 @@ The following is a list of properties that are available for you under the `"exp
 
    - `icon`
 
-      Local path or remote url to an image to use for your app's icon on Android. We recommend that you use a 512x512 png file with transparency. This icon will appear on the home screen and within the Expo app.
+      Local path or remote url to an image to use for your app's icon. We recommend that you use a 512x512 png file with transparency. This icon will appear on the home screen and within the Expo app.
+
+   - `permissions`
+
+      List of permissions used by the standalone app. Remove the field to use the default list of permissions.
+    
+    Example: `[ "CAMERA", "ACCESS_FINE_LOCATION" ]`.
+    
+    You can specify the following permissions depending on what you need:
+    
+      - `ACCESS_COARSE_LOCATION`
+      - `ACCESS_FINE_LOCATION`
+      - `CAMERA`
+      - `MANAGE_DOCUMENTS`
+      - `READ_CONTACTS`
+      - `READ_EXTERNAL_STORAGE`
+      - `READ_INTERNAL_STORAGE`
+      - `READ_PHONE_STATE`
+      - `RECORD_AUDIO`
+      - `USE_FINGERPRINT`
+      - `VIBRATE`
+      - `WAKE_LOCK`
+      - `WRITE_EXTERNAL_STORAGE`
+      - `com.anddoes.launcher.permission.UPDATE_COUNT`
+      - `com.android.launcher.permission.INSTALL_SHORTCUT`
+      - `com.google.android.c2dm.permission.RECEIVE`
+      - `com.google.android.gms.permission.ACTIVITY_RECOGNITION`
+      - `com.google.android.providers.gsf.permission.READ_GSERVICES`
+      - `com.htc.launcher.permission.READ_SETTINGS`
+      - `com.htc.launcher.permission.UPDATE_SHORTCUT`
+      - `com.majeur.launcher.permission.UPDATE_BADGE`
+      - `com.sec.android.provider.badge.permission.READ`
+      - `com.sec.android.provider.badge.permission.WRITE`
+      - `com.sonyericsson.home.permission.BROADCAST_BADGE`
 
    - `config`
 
-
+      
        - `branch`
 
           [Branch](https://branch.io/) key to hook up Branch linking services.
@@ -256,7 +315,7 @@ The following is a list of properties that are available for you under the `"exp
 
        - `fabric`
 
-          [Twitter Fabric](https://get.fabric.io/) keys to hook up Crashlytics and other services.
+          [Google Developers Fabric](https://get.fabric.io/) keys to hook up Crashlytics and other services.
 
            - `apiKey`
 
@@ -295,3 +354,5 @@ The following is a list of properties that are available for you under the `"exp
    Configuration for scripts to run to hook into the publish process
 
    - `postPublish`
+
+      

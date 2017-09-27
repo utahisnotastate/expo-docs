@@ -10,7 +10,7 @@ There are three main steps to wiring up push notifications: sending a user's Exp
 
 ## 1. Save the user's Expo Push Token on your server
 
-In order to send a push notification to somebody, we need to know about their device. Sure, we know our user's account information, but Apple, Google, and Expo do not understand what devices correspond to "Brent" in your propiertary user account system. Expo takes care of identifying your device with Apple and Google through the Expo push token, so all we need to do is send this to your server so you can associate it with the user account and use it in the future for sending push notifications.![Diagram explaining saving tokens](./saving-token.png)
+In order to send a push notification to somebody, we need to know about their device. Sure, we know our user's account information, but Apple, Google, and Expo do not understand what devices correspond to "Brent" in your proprietary user account system. Expo takes care of identifying your device with Apple and Google through the Expo push token, so all we need to do is send this to your server so you can associate it with the user account and use it in the future for sending push notifications.![Diagram explaining saving tokens](./saving-token.png)
 
 ```javascript
 import { Permissions, Notifications } from 'expo';
@@ -18,7 +18,7 @@ import { Permissions, Notifications } from 'expo';
 const PUSH_ENDPOINT = 'https://your-server.com/users/push-token';
 
 async function registerForPushNotificationsAsync() {
-  const { existingStatus } = await Permissions.getAsync(Permissions.REMOTE_NOTIFICATIONS);
+  const { existingStatus } = await Permissions.getAsync(Permissions.NOTIFICATIONS);
   let finalStatus = existingStatus;
 
   // only ask if permissions have not already been determined, because
@@ -26,7 +26,7 @@ async function registerForPushNotificationsAsync() {
   if (existingStatus !== 'granted') {
     // Android remote notification permissions are granted during the app
     // install, so this will only ask on iOS
-    const { status } = await Permissions.askAsync(Permissions.REMOTE_NOTIFICATIONS);
+    const { status } = await Permissions.askAsync(Permissions.NOTIFICATIONS);
     finalStatus = status;
   }
 
@@ -36,7 +36,7 @@ async function registerForPushNotificationsAsync() {
   }
 
   // Get the token that uniquely identifies this device
-  let token = await Notifications.getExponentPushTokenAsync();
+  let token = await Notifications.getExpoPushTokenAsync();
 
   // POST the token to our backend so we can use it to send pushes from there
   return fetch(PUSH_ENDPOINT, {
@@ -177,6 +177,18 @@ Send a POST request to `https://exp.host/--/api/v2/push/send` with the following
     accept: application/json
     accept-encoding: gzip, deflate
     content-type: application/json
+
+This API does not require any authentication.
+
+Here's an hello world request done with curl:
+
+```bash
+curl -H "Content-Type: application/json" -X POST https://exp.host/--/api/v2/push/send -d '{
+  "to": "ExponentPushToken[Xrl3FBKaZnbpv9ajMJEDUY]",
+  "title":"hello",
+  "body": "world"
+}'
+```
 
 The HTTP request body must be JSON. It may either be a single message object or an array of up to 100 messages. **We recommend using an array when you want to send multiple messages to efficiently minimize the number of requests you need to make to Expo servers.** This is an example request body that sends two messages:
 

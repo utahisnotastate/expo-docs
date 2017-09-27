@@ -158,8 +158,7 @@ mutation ($idToken: String!, $name: String!) {
 #### Social OAuth Authentication providers
 
 Learn how to integrate with Auth0 social providers in the
-[expo-auth0-example](https://github.com/graphcool-examples/expo-auth0-instagram-example) repository.
-
+[expo-auth0-example](https://github.com/graphcool-examples/react-native-graphql/tree/master/authentication-with-expo-and-auth0) repository.
 
 ### Permissions
 
@@ -282,7 +281,7 @@ export default graphql(gql`
 There are some Apollo examples written in React Native that you may wish
 to refer to. All the code should work equally well with Expo.
 
-1. The [“Hello World” example](https://github.com/apollostack/frontpage-react-native-app) used at [dev.apolldata.com](dev.apolldata.com).
+1. The [“Hello World” example](https://github.com/apollostack/frontpage-react-native-app) used at [dev.apollodata.com](dev.apollodata.com).
 1. A [GitHub API Example](https://github.com/apollostack/GitHub-GraphQL-API-Example) built to work with GitHub’s new GraphQL API.
 
 You are now ready to use GraphQL in your Expo app 🚀

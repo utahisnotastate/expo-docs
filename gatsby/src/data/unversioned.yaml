@@ -7,7 +7,9 @@
     Project Lifecycle: /versions/unversioned/introduction/project-lifecycle.html
     Community: /versions/unversioned/introduction/community.html
     Additional Resources: /versions/unversioned/introduction/additional-resources.html
+    Troubleshooting Proxies: /versions/unversioned/introduction/troubleshooting-proxies.html
     Frequently Asked Questions: /versions/unversioned/introduction/faq.html
+    Why not Expo?: /versions/unversioned/introduction/why-not-expo.html
 - title: Working with Expo
   index: /versions/unversioned/workflow/index.html
   links:
@@ -38,6 +40,7 @@
     Configuring Status Bar: /versions/unversioned/guides/configuring-statusbar.html
     Routing & Navigation: /versions/unversioned/guides/routing-and-navigation.html
     Push Notifications: /versions/unversioned/guides/push-notifications.html
+    Using Modern JavaScript: /versions/unversioned/guides/using-modern-javascript.html
     Using ClojureScript: /versions/unversioned/guides/using-clojurescript.html
     Using Firebase: /versions/unversioned/guides/using-firebase.html
     Using GraphQL: /versions/unversioned/guides/using-graphql.html
@@ -51,17 +54,22 @@
   links:
     Introduction: /versions/unversioned/sdk/index.html
     Accelerometer: /versions/unversioned/sdk/accelerometer.html
+    AdMob: /versions/unversioned/sdk/admob.html
     Amplitude: /versions/unversioned/sdk/amplitude.html
     AppLoading: /versions/unversioned/sdk/app-loading.html
     Art: /versions/unversioned/sdk/art.html
     Asset: /versions/unversioned/sdk/asset.html
     Audio: /versions/unversioned/sdk/audio.html
+    AuthSession: /versions/unversioned/sdk/auth-session.html
     AV: /versions/unversioned/sdk/av.html
     BarCodeScanner: /versions/unversioned/sdk/bar-code-scanner.html
     BlurView: /versions/unversioned/sdk/blur-view.html
     Branch: /versions/unversioned/sdk/branch.html
+    Brightness: /versions/unversioned/sdk/brightness.html
+    Camera: /versions/unversioned/sdk/camera.html
     Constants: /versions/unversioned/sdk/constants.html
     Contacts: /versions/unversioned/sdk/contacts.html
+    DeviceMotion: /versions/unversioned/sdk/devicemotion.html
     DocumentPicker: /versions/unversioned/sdk/document-picker.html
     ErrorRecovery: /versions/unversioned/sdk/error-recovery.html
     Facebook: /versions/unversioned/sdk/facebook.html
@@ -69,6 +77,7 @@
     FileSystem: /versions/unversioned/sdk/filesystem.html
     Fingerprint: /versions/unversioned/sdk/fingerprint.html
     Font: /versions/unversioned/sdk/font.html
+    GestureHandler: /versions/unversioned/sdk/gesture-handler.html
     GLView: /versions/unversioned/sdk/gl-view.html
     Google: /versions/unversioned/sdk/google.html
     Gyroscope: /versions/unversioned/sdk/gyroscope.html
@@ -78,17 +87,20 @@
     LinearGradient: /versions/unversioned/sdk/linear-gradient.html
     Location: /versions/unversioned/sdk/location.html
     Lottie: /versions/unversioned/sdk/lottie.html
+    Magnetometer: /versions/unversioned/sdk/magnetometer.html
     MapView: /versions/unversioned/sdk/map-view.html
     Notifications: /versions/unversioned/sdk/notifications.html
+    Payments: /versions/unversioned/sdk/payments.html
     Pedometer: /versions/unversioned/sdk/pedometer.html
     Permissions: /versions/unversioned/sdk/permissions.html
     registerRootComponent: /versions/unversioned/sdk/register-root-component.html
     ScreenOrientation: /versions/unversioned/sdk/screen-orientation.html
+    SecureStore: /versions/unversioned/sdk/securestore.html
     Segment: /versions/unversioned/sdk/segment.html
+    Speech: /versions/unversioned/sdk/speech.html
     SQLite: /versions/unversioned/sdk/sqlite.html
     Svg: /versions/unversioned/sdk/svg.html
     takeSnapshotAsync: /versions/unversioned/sdk/take-snapshot-async.html
     Util: /versions/unversioned/sdk/util.html
     Video: /versions/unversioned/sdk/video.html
     WebBrowser: /versions/unversioned/sdk/webbrowser.html
-
